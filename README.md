@@ -17,6 +17,27 @@ Python 3.8 or newer, no packages. Check with `python3 --version`.
 python main.py
 ```
 
+Unix, macOS and Windows (use `python` instead of `python3` there).
+
+## How to play (you only need the number keys)
+
+Every turn prints the choices that actually work where you stand, and you pick
+one by typing its number:
+
+```
+  1) Go to Jungle
+  2) Look around
+  3) Check your bag
+  4) Help
+  5) Quit
+```
+
+Typing the words still works too (`go jungle`, `search`, `cross`, `light`,
+`bag`, `help`, `quit`), in any case and with extra spaces. Nothing you can type
+crashes the game, and a wrong entry never costs energy. If you get stuck, the
+hint under the menu changes with your situation, and `help` prints the full
+rules.
+
 ## Rules and design decisions
 
 - The island is a line: Beach, Jungle, Cave, Old Bridge, Lighthouse.
@@ -45,28 +66,27 @@ go <place>   search   cross   light   wade   inventory   status   help   quit
 
 ```
 What should the island call you? Ada
-go jungle      -> 4 energy, rope found
-climb          -> 3 energy, breadfruit
-eat            -> 5 energy
-go cave        -> 4 energy (dark)
-search         -> 3 energy, lantern
-go old bridge  -> 2 energy
-cross          -> 1 energy
-light          -> 0 energy, you win
+
+[#####] 5/5 | Beach | turns: 0 | carrying: nothing
+  1) Go to Jungle
+  2) Look around
+  3) Check your bag
+  4) Help
+  5) Quit
+ > 1                     You walk to Jungle.            (4 energy)
+ > 3                     You found the rope!
+ > 3                     You climb the tree.            (3 energy, breadfruit)
+ > 3                     You eat the breadfruit.        (5 energy)
+ > 2                     You feel your way into the Cave in total dark.
+ > 3                     You grope blindly (-1 energy) and find the lantern!
+ > 2                     You walk to Old Bridge.        (2 energy)
+ > 3                     Rope anchored, you cross.      (1 energy)
+ > 2                     You spend your last strength turning the wick.
+                         THE BEACON BURNS — you win, turns 9, energy 0
 ```
 
-```
-What is your name, castaway? Ada
-> go jungle      You walk to Jungle.
-> search         You found the rope!
-> go cave        You walk to Cave.
-> search         You found the lantern!
-> go old bridge  You walk to Old Bridge.
-> cross          Rope anchored, you cross to the Lighthouse.
-> light          You light the beacon. A ship turns toward the island. You are saved!
-You win!
-Turns: 7 | final energy: 1
-```
+The winning line costs exactly the 5 energy you start with, so the breadfruit
+trade is mandatory. Every wasted action is fatal.
 
 ## Tests
 

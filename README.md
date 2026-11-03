@@ -44,6 +44,18 @@ go <place>   search   cross   light   wade   inventory   status   help   quit
 ## Example winning run
 
 ```
+What should the island call you? Ada
+go jungle      -> 4 energy, rope found
+climb          -> 3 energy, breadfruit
+eat            -> 5 energy
+go cave        -> 4 energy (dark)
+search         -> 3 energy, lantern
+go old bridge  -> 2 energy
+cross          -> 1 energy
+light          -> 0 energy, you win
+```
+
+```
 What is your name, castaway? Ada
 > go jungle      You walk to Jungle.
 > search         You found the rope!
